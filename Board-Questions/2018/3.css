@@ -1,0 +1,18 @@
+body{
+    background-color: cornsilk;
+}
+.email{
+    background-color: blanchedalmond;
+    padding: 20px;
+    margin: 10px;
+}
+.username{
+    background-color: burlywood;
+    padding: 20px;
+    margin: 10px;
+}
+.password{
+    background-color: bisque;
+    padding: 20px;
+    margin: 10px;
+}

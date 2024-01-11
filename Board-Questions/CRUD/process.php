@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
     // Update
     $update_id = 1; // Replace with the ID you want to update
-    $new_name = "Updated Name";
+    $new_name = "Sama";
     $conn->query("UPDATE users SET name='$new_name' WHERE id=$update_id");
 
     // Delete

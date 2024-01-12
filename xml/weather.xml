@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE weather[
+    <!ELEMENT (location,temp,wind)>
+    <!ELEMENT location(#PCDATA)>
+    <!ELEMENT temp(#PCDATA)>
+    <!ELEMENT wind(#PCDATA)>
+]>
+
+<weather>
+    <location>kathmandu</location>
+    <temp>4deg</temp>
+    <wind>NW 2 mph</wind>
+</weather>

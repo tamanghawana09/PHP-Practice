@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE weather[
-    <!ELEMENT (location,temp,wind)>
-    <!ELEMENT location(#PCDATA)>
-    <!ELEMENT temp(#PCDATA)>
-    <!ELEMENT wind(#PCDATA)>
+    <!ELEMENT weather (location,temp,wind)>
+    <!ELEMENT location (#PCDATA)>
+    <!ELEMENT temp (#PCDATA)>
+    <!ELEMENT wind (#PCDATA)>
 ]>
 
 <weather>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="user.xsl" type="text/xsl"?>
+<college>
+    <student>
+        <name>Hawana</name>
+    </student>
+    <student>
+        <name>Kushal</name>
+    </student>
+    <student>
+        <name>Sama</name>
+    </student>
+</college>

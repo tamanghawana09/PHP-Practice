@@ -31,6 +31,9 @@
         $update_sql = "UPDATE users SET email = ? WHERE name = ?";
         $stmt = $conn->prepare($update_sql);
         $stmt->bind_param("ss", $email, $name);
+        // bind_param helps to bind the parameters
+        // "s" is the string for the variable $name (likewise for integers "i", double "d" can be used)
+        // $name and $email is the value we want to insert into the sql query in the place of '?'
         $stmt->execute();
         $stmt->close();
     
@@ -54,6 +57,9 @@
         $del_sql = "DELETE FROM users WHERE name = ? ";
         $stmt = $conn->prepare($del_sql);
         $stmt->bind_param("s", $name);
+        // bind_param helps to bind the parameters
+        // "s" is the string for the variable $name (likewise for integers "i", double "d" can be used)
+        // $name is the value we want to insert into the sql query in the place of '?'
         $stmt->execute();
         $stmt->close();
 

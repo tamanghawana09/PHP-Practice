@@ -1,32 +1,73 @@
 <?php
-include 'database.php';
+    include 'database.php';
 
-if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    if (isset($_POST['insert'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
 
-    // Create
-    $sql = "INSERT INTO users (name, email) VALUES ('$name', '$email')";
-    $conn->query($sql);
+        // Create
+        $sql = "INSERT INTO users (name, email) VALUES ('$name', '$email')";
+        $conn->query($sql);
 
-    // Read
-    $result = $conn->query("SELECT * FROM users");
+        // Read
+        $result = $conn->query("SELECT * FROM users");
 
-    echo "<h2>Users</h2>";
-    echo "<ul>";
-    while ($row = $result->fetch_assoc()) {
-        echo "<li>{$row['name']} - {$row['email']}</li>";
+        echo "<h2>Users</h2>";
+        echo "<ul>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>{$row['name']} - {$row['email']}</li>";
+        }
+        echo "</ul>";
+
+    
     }
-    echo "</ul>";
 
-    // Update
-    $update_id = 1; // Replace with the ID you want to update
-    $new_name = "Sama";
-    $conn->query("UPDATE users SET name='$new_name' WHERE id=$update_id");
+    if(isset($_POST['update'])){
+        // Update
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+    
+        // Use prepared statement to avoid SQL injection
+        $update_sql = "UPDATE users SET email = ? WHERE name = ?";
+        $stmt = $conn->prepare($update_sql);
+        $stmt->bind_param("ss", $email, $name);
+        $stmt->execute();
+        $stmt->close();
+    
+        $result = $conn->query("SELECT * FROM users");
+        echo "<h2>Users</h2>";
+        echo "The data " . $name . " is updated";
+        echo "<ul>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>{$row['name']} - {$row['email']}</li>";
+        }
+        echo "</ul>";
+    }
+    
 
-    // Delete
-    $delete_id = 2; // Replace with the ID you want to delete
-    $conn->query("DELETE FROM users WHERE id=$delete_id");
-}
-$conn->close();
+    if(isset($_POST['delete'])){
+        //Delete
+        $name = $_POST['name'];
+     
+
+        // Use prepared statement to avoid SQL injection
+        $del_sql = "DELETE FROM users WHERE name = ? ";
+        $stmt = $conn->prepare($del_sql);
+        $stmt->bind_param("s", $name);
+        $stmt->execute();
+        $stmt->close();
+
+        $result = $conn->query("SELECT * FROM users");
+        echo "<h2>Users</h2>";
+        echo "The data ".$name. " deleted";
+        echo "<ul>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<li>{$row['name']} - {$row['email']}</li>";
+        }
+        echo "</ul>";
+    }
+
+
+    $conn->close();
+    
 ?>

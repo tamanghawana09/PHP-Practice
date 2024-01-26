@@ -14,7 +14,9 @@
         <label for="email">Email:</label>
         <input type="email" name="email" required>
         <br>
-        <button type="submit" name="submit">Submit</button>
+        <button type="submit" name="insert">Insert</button>
+        <button type="submit" name="update">Update</button>
+        <button type="submit" name="delete">Delete</button>
     </form>
 </body>
 </html>
